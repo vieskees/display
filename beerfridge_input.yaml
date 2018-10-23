@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: display
+spec:
+  containers:
+  - name: display
+    image: vieskees/display:dev
+    stdin: true
+    tty: true
+    imagePullPolicy: Always
+    securityContext:
+      privileged: true
+  nodeSelector:
+    name: drinker1
+  imagePullSecrets:
+  - name: dockerkey
+    restartPolicy: Always
